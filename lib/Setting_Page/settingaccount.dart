@@ -154,11 +154,20 @@ class _SettingAccountPageState extends State<SettingAccountPage> {
               height: 40,
             ),
             Center(
-              child: FlatButton(
-                  color: Colors.greenAccent,
-                  padding: EdgeInsets.symmetric(horizontal: 35),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
+              child: TextButton(
+                  style: TextButton.styleFrom(
+                    minimumSize: Size(150, 50),
+                    textStyle: TextStyle(fontSize: 20, color: Colors.white),
+                    primary: Colors.greenAccent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 35),
+                  ),
+                  // color: Colors.greenAccent,
+                  // padding: EdgeInsets.symmetric(horizontal: 35),
+                  // shape: RoundedRectangleBorder(
+                  //     borderRadius: BorderRadius.circular(20)),
                   onPressed: () {
                     Navigator.of(context).pop();
 
@@ -195,7 +204,16 @@ class _SettingAccountPageState extends State<SettingAccountPage> {
                   ],
                 ),
                 actions: [
-                  FlatButton(
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      minimumSize: Size(150, 50),
+                      textStyle: TextStyle(fontSize: 20, color: Colors.white),
+                      primary: Colors.greenAccent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 35),
+                    ),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },

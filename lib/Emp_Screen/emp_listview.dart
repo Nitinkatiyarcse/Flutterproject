@@ -49,10 +49,5 @@ class _EmpListPageState extends State<EmpListPage> {
         );
       },
     );
-    floatingActionButton:
-    FloatingActionButton(
-      child: Icon(Icons.arrow_downward),
-      onPressed: () => scrollToItem(),
-    );
   }
 }

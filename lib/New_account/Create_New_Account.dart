@@ -40,6 +40,19 @@ class _CreateNewAccountState extends State<CreateNewAccount> {
     return Stack(
       children: [
         Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.greenAccent,
+            elevation: 1,
+            leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ),
           backgroundColor: Colors.green[100],
           body: SingleChildScrollView(
             child: Column(
@@ -228,8 +241,17 @@ class _CreateNewAccountState extends State<CreateNewAccount> {
                             width: 250,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20)),
-                            child: RaisedButton(
-                              color: Colors.greenAccent,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                maximumSize: Size(250, 45),
+                                primary: Colors.greenAccent,
+                                onPrimary: Colors.black,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50.0),
+                                  side: BorderSide(color: Colors.green),
+                                ),
+                              ),
+                              //color: Colors.greenAccent,
                               child: Text('Register',
                                   style: TextStyle(
                                     color: Colors.white,
@@ -298,10 +320,6 @@ class _CreateNewAccountState extends State<CreateNewAccount> {
                                 //   ],
                                 // ).show();
                               },
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50.0),
-                                side: BorderSide(color: Colors.green),
-                              ),
                             ),
                           ),
                         ),

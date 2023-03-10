@@ -39,7 +39,7 @@ class _RegisterPageState extends State<RegisterPage> {
               SizedBox(
                 height: 20.0,
               ),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: () => _selectDate(context),
                 child: Text(
                   'Select date',

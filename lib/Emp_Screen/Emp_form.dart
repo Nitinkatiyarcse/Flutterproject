@@ -1,9 +1,14 @@
-// ignore_for_file: avoid_print, deprecated_member_use, unused_import
+// ignore_for_file: avoid_print, deprecated_member_use, unused_import, import_of_legacy_library_into_null_safe
 
 import 'package:flutter/material.dart';
 import 'package:loginproject/Emp_Screen/Emp_details.dart';
+import 'package:loginproject/Setting_Page/setting_page.dart';
 import 'package:loginproject/main.dart';
+import 'package:loginproject/share.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:get/get.dart';
+
+//import 'package:flutter_alert/rflutter_alert.dart';
 
 class EmployeeList extends StatefulWidget {
   @override
@@ -33,7 +38,7 @@ class EmployeeListState extends State<EmployeeList> {
   Widget _buildName() {
     return TextFormField(
         controller: _name,
-        decoration: const InputDecoration(labelText: 'Name'),
+        decoration: InputDecoration(labelText: 'name'.tr),
         //maxLength: 20,
         validator: (String? value) {
           if (value!.isEmpty) {
@@ -50,7 +55,7 @@ class EmployeeListState extends State<EmployeeList> {
   Widget _buildEmail() {
     return TextFormField(
         controller: _email,
-        decoration: const InputDecoration(labelText: 'Email'),
+        decoration: InputDecoration(labelText: 'email'.tr),
         validator: (String? value) {
           if (value!.isEmpty) {
             return 'Email is Required';
@@ -66,7 +71,7 @@ class EmployeeListState extends State<EmployeeList> {
   Widget _buildPassword() {
     return TextFormField(
         controller: _password,
-        decoration: const InputDecoration(labelText: 'Password'),
+        decoration: InputDecoration(labelText: 'password'.tr),
         validator: (String? value) {
           if (value!.isEmpty) {
             return 'Password is Required';
@@ -82,7 +87,7 @@ class EmployeeListState extends State<EmployeeList> {
   Widget _buildURL() {
     return TextFormField(
         controller: _url,
-        decoration: const InputDecoration(labelText: 'URL'),
+        decoration: InputDecoration(labelText: 'uRL'.tr),
         validator: (String? value) {
           if (value!.isEmpty) {
             return 'Url is Required';
@@ -100,7 +105,7 @@ class EmployeeListState extends State<EmployeeList> {
         controller: _phoneNumber,
 
         //maxLength: 10,
-        decoration: const InputDecoration(labelText: 'Phone number'),
+        decoration: InputDecoration(labelText: 'phone number'.tr),
         validator: (String? value) {
           if (value!.isEmpty) {
             return 'Phone number is Required';
@@ -116,7 +121,7 @@ class EmployeeListState extends State<EmployeeList> {
   Widget _buildCalories() {
     return TextFormField(
         controller: _calories,
-        decoration: const InputDecoration(labelText: 'Calories'),
+        decoration: InputDecoration(labelText: 'calories'.tr),
         keyboardType: TextInputType.number,
         validator: (String? value) {
           int? calories = int.tryParse(value!);
@@ -130,6 +135,49 @@ class EmployeeListState extends State<EmployeeList> {
         });
   }
 
+  final List locale = [
+    {'name': 'ENGLISH', 'locale': Locale('en', 'US')},
+    {'name': 'हिन्दी', 'locale': Locale('hi', 'IN')}
+  ];
+  updatelanguage(Locale locale) {
+    Get.back();
+    Get.updateLocale(locale);
+  }
+
+  builddialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (builder) {
+          return AlertDialog(
+            title: Text('Choose a language'),
+            content: Container(
+              width: double.maxFinite,
+              child: ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: GestureDetector(
+                          onTap: () {
+                            print(locale[index]['name']);
+                            updatelanguage(locale[index]['locale']);
+                          },
+                          child: Text(
+                            locale[index]['name'],
+                          )),
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return Divider(
+                      color: Colors.blue,
+                    );
+                  },
+                  itemCount: locale.length),
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -137,15 +185,25 @@ class EmployeeListState extends State<EmployeeList> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Employee Form'),
-        actions: [
+        title: Text('employee form'.tr),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.language_outlined),
+            onPressed: () {
+              builddialog(context);
+            },
+          ),
           Padding(
             padding: const EdgeInsets.only(right: 10.0, top: 10.0),
             child: PopupMenuButton(
               itemBuilder: (context) => [
                 PopupMenuItem(
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => SettingUiPage()));
+                    },
                     child: Row(
                       children: const [
                         Icon(
@@ -161,17 +219,54 @@ class EmployeeListState extends State<EmployeeList> {
                   ),
                 ),
                 PopupMenuItem(
-                  child: Row(
-                    children: const [
-                      Icon(
-                        Icons.share,
-                        color: Colors.black,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 10.0),
-                        child: Text('Share'),
-                      )
-                    ],
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => SharePage()));
+                    },
+                    child: Row(
+                      children: const [
+                        Icon(
+                          Icons.share,
+                          color: Colors.black,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 10.0),
+                          child: Text('Share'),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                PopupMenuItem(
+                  child: InkWell(
+                    onTap: () {
+                      final snackbar = SnackBar(
+                          action: SnackBarAction(
+                            label: 'Undo',
+                            textColor: Colors.black,
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                          behavior: SnackBarBehavior.floating,
+                          backgroundColor: Colors.greenAccent,
+                          content: Text('This is a Snackbar'));
+                      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                    },
+                    child: Row(
+                      children: const [
+                        Icon(
+                          Icons.info_outline,
+                          color: Colors.black,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 10.0),
+                          child: Text('Snackbar'),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 PopupMenuItem(
@@ -225,10 +320,11 @@ class EmployeeListState extends State<EmployeeList> {
                     height: 100,
                   ),
                   Container(
-                    height: 35,
+                    height: 40,
                     width: 200,
                     decoration: BoxDecoration(color: Colors.greenAccent),
-                    child: FlatButton(
+                    child: TextButton(
+                        style: TextButton.styleFrom(),
                         child: const Text(
                           'Submit',
                           style: TextStyle(color: Colors.white, fontSize: 22),

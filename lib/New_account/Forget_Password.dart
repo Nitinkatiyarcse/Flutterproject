@@ -44,7 +44,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     padding: const EdgeInsets.only(
                         top: 15.0, left: 5.0, right: 10.0),
                     child: Text(
-                      'Enter your email we will send instraction to reset your password',
+                      'Enter your email we will send instructions to reset your password',
                     ),
                   ),
                 ),
@@ -85,18 +85,26 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       BoxDecoration(borderRadius: BorderRadius.circular(20)),
                   child: Padding(
                     padding: const EdgeInsets.only(top: 15.0),
-                    child: RaisedButton(
-                      color: Colors.greenAccent,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.greenAccent,
+                        minimumSize: Size(200, 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50.0),
+                        ),
+                        side: BorderSide(color: Colors.green),
+                      ),
+
                       child: Text('Register',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 25,
                           )),
                       onPressed: () => debugPrint("Password send"),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50.0),
-                        side: BorderSide(color: Colors.green),
-                      ),
+                      // shape: RoundedRectangleBorder(
+                      //   borderRadius: BorderRadius.circular(50.0),
+                      //   side: BorderSide(color: Colors.green),
+                      // ),
                     ),
                   ),
                 ),

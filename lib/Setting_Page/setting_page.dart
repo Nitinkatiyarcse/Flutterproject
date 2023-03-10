@@ -113,10 +113,14 @@ class _SettingUiPageState extends State<SettingUiPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  RaisedButton(
-                    padding: EdgeInsets.symmetric(horizontal: 45),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                      onPrimary: Colors.black,
+                      padding: EdgeInsets.symmetric(horizontal: 45),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                    ),
                     onPressed: () {},
                     child: Text(
                       "CANCLE",
@@ -127,12 +131,14 @@ class _SettingUiPageState extends State<SettingUiPage> {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                  RaisedButton(
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.greenAccent,
+                      padding: EdgeInsets.symmetric(horizontal: 45),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                    ),
                     onPressed: () {},
-                    color: Colors.greenAccent,
-                    padding: EdgeInsets.symmetric(horizontal: 45),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
                     child: Text(
                       "Save",
                       style: TextStyle(

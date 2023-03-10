@@ -1,5 +1,5 @@
 // ignore: file_names
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:loginproject/Bottom_bar/Fab_Page.dart';
@@ -10,13 +10,19 @@ import 'package:loginproject/Charts/Barchart.dart';
 import 'package:loginproject/Emp_Screen/Emp_form.dart';
 import 'package:loginproject/Charts/Linechart.dart';
 import 'package:loginproject/Charts/Piechart.dart';
-import 'package:loginproject/Emp_Screen/List_jsondata.dart';
+//import 'package:loginproject/Emp_Screen/List_jsondata.dart';
 //import 'package:loginproject/Emp_Screen/List_jsondata.dart';
 import 'package:loginproject/Emp_Screen/emp_listview.dart';
 import 'package:loginproject/Json_list/home_page.dart';
 import 'package:loginproject/Setting_Page/setting_page.dart';
+import 'package:loginproject/TranslationPage/translate_page.dart';
+import 'package:loginproject/Video_player/video_player.dart';
+import 'package:loginproject/about.dart';
+import 'package:loginproject/autofill_otp/send_otp.dart';
 import 'package:loginproject/contact_list.dart';
+import 'package:loginproject/download.dart';
 import 'package:loginproject/main.dart';
+import 'package:loginproject/photo_api.dart';
 
 import 'Emp_Screen/emplist_details.dart';
 
@@ -46,17 +52,23 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.greenAccent,
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () => debugPrint("item search"),
-          ),
+              icon: const Icon(Icons.search),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => VideoPlayerPage()));
+              }),
           IconButton(
-            icon: const Icon(Icons.add_box),
-            onPressed: () => debugPrint("member added"),
-          ),
+              icon: const Icon(Icons.add_box),
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => PhotoApiPage()));
+              }),
           IconButton(
-            icon: const Icon(Icons.add_call),
-            onPressed: () => debugPrint("search member for call"),
-          ),
+              icon: const Icon(Icons.sms_outlined),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => SendOtpScreen()));
+              }),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -160,8 +172,8 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.of(context).pop();
 
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => ContactListPage()));
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => AboutPage()));
               },
             ),
             ListTile(
@@ -174,6 +186,18 @@ class _HomePageState extends State<HomePage> {
 
                 Navigator.push(
                     context, MaterialPageRoute(builder: (_) => HomePageJson()));
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.file_download_outlined),
+              title: const Text(
+                "Download",
+              ),
+              onTap: () {
+                Navigator.of(context).pop();
+
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => DownloadButtonPage()));
               },
             ),
             ListTile(
@@ -190,6 +214,18 @@ class _HomePageState extends State<HomePage> {
             ),
             const Divider(
               color: Colors.black,
+            ),
+            ListTile(
+              leading: const Icon(Icons.language_outlined),
+              title: const Text(
+                "Language",
+              ),
+              onTap: () {
+                Navigator.of(context).pop();
+
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => TranslatePage()));
+              },
             ),
             ListTile(
               leading: const Icon(Icons.exit_to_app),
@@ -224,21 +260,27 @@ class _HomePageState extends State<HomePage> {
                     fit: BoxFit.fill,
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 225, left: 85),
+                    margin: EdgeInsets.only(top: 205, left: 85),
                     height: 26,
                     width: 90,
                     child: Stack(
                       children: <Widget>[
-                        RaisedButton(
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: Size(90, 26),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(80.0)),
+                            padding: const EdgeInsets.all(0.0),
+                          ),
                           onPressed: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (_) => MyChartPage()));
                           },
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(80.0)),
-                          padding: const EdgeInsets.all(0.0),
+                          // shape: RoundedRectangleBorder(
+                          //     borderRadius: BorderRadius.circular(80.0)),
+                          // padding: const EdgeInsets.all(0.0),
                           child: Ink(
                             decoration: BoxDecoration(
                                 gradient: const LinearGradient(
@@ -279,21 +321,25 @@ class _HomePageState extends State<HomePage> {
                     fit: BoxFit.fitWidth,
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 225, left: 85),
+                    margin: EdgeInsets.only(top: 135, left: 65),
                     height: 26,
                     width: 90,
                     child: Stack(
                       children: <Widget>[
-                        RaisedButton(
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              minimumSize: Size(90, 26),
+                              padding: const EdgeInsets.all(0.0),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(80.0)),
+                              primary: Colors.yellow,
+                              onPrimary: Colors.greenAccent),
                           onPressed: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (_) => MyBarchart()));
                           },
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(80.0)),
-                          padding: const EdgeInsets.all(0.0),
                           child: Ink(
                             decoration: BoxDecoration(
                                 gradient: const LinearGradient(
@@ -334,21 +380,28 @@ class _HomePageState extends State<HomePage> {
                     fit: BoxFit.fill,
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 225, left: 85),
+                    margin: EdgeInsets.only(top: 135, left: 65),
                     height: 26,
                     width: 90,
                     child: Stack(
                       children: <Widget>[
-                        RaisedButton(
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              minimumSize: Size(90, 26),
+                              padding: const EdgeInsets.all(0.0),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(80.0)),
+                              primary: Colors.yellow,
+                              onPrimary: Colors.greenAccent),
                           onPressed: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (_) => MyBarchart()));
                           },
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(80.0)),
-                          padding: const EdgeInsets.all(0.0),
+                          // shape: RoundedRectangleBorder(
+                          //     borderRadius: BorderRadius.circular(80.0)),
+                          // padding: const EdgeInsets.all(0.0),
                           child: Ink(
                             decoration: BoxDecoration(
                                 gradient: const LinearGradient(
@@ -394,16 +447,23 @@ class _HomePageState extends State<HomePage> {
                     width: 90,
                     child: Stack(
                       children: <Widget>[
-                        RaisedButton(
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              minimumSize: Size(90, 26),
+                              padding: const EdgeInsets.all(0.0),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(80.0)),
+                              primary: Colors.yellow,
+                              onPrimary: Colors.greenAccent),
                           onPressed: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (_) => const MyHomePage()));
                           },
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(80.0)),
-                          padding: const EdgeInsets.all(0.0),
+                          // shape: RoundedRectangleBorder(
+                          //     borderRadius: BorderRadius.circular(80.0)),
+                          // padding: const EdgeInsets.all(0.0),
                           child: Ink(
                             decoration: BoxDecoration(
                                 gradient: const LinearGradient(

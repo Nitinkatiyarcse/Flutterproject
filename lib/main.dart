@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:loginproject/TranslationPage/local_string.dart';
 
 import 'LoginFormWithValidation.dart';
 
@@ -10,7 +12,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      translations: LocalString(),
+      locale: Locale('en', 'US'),
       debugShowCheckedModeBanner: false,
       title: 'Login Page',
       theme: ThemeData(

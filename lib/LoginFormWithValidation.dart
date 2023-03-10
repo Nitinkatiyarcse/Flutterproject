@@ -125,7 +125,11 @@ class _LoginFormValidationState extends State<LoginFormValidation> {
                   const SizedBox(
                     height: 25,
                   ),
-                  FlatButton(
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      minimumSize: Size(180, 15),
+                      padding: EdgeInsets.only(top: 30.0),
+                    ),
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (_) => ForgotPassword()));
@@ -146,7 +150,8 @@ class _LoginFormValidationState extends State<LoginFormValidation> {
                       decoration: BoxDecoration(
                           color: Colors.greenAccent,
                           borderRadius: BorderRadius.circular(20)),
-                      child: FlatButton(
+                      child: TextButton(
+                        style: TextButton.styleFrom(),
                         onPressed: () {
                           if (formkey.currentState!.validate()) {
                             Navigator.push(
@@ -202,7 +207,7 @@ class _LoginFormValidationState extends State<LoginFormValidation> {
                   const SizedBox(
                     height: 50,
                   ),
-                  FlatButton(
+                  TextButton(
                     onPressed: () {
                       Navigator.push(
                           context,
@@ -212,7 +217,7 @@ class _LoginFormValidationState extends State<LoginFormValidation> {
                     child: Container(
                       child: const Text(
                         'New User? Create Account',
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.black, fontSize: 15),
                       ),
                       decoration: BoxDecoration(
                           border: Border(
