@@ -224,7 +224,7 @@ class _HomePageState extends State<HomePage> {
                     fit: BoxFit.fill,
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 205, left: 85),
+                    margin: EdgeInsets.only(top: 225, left: 85),
                     height: 26,
                     width: 90,
                     child: Stack(
@@ -279,7 +279,7 @@ class _HomePageState extends State<HomePage> {
                     fit: BoxFit.fitWidth,
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 135, left: 65),
+                    margin: EdgeInsets.only(top: 225, left: 85),
                     height: 26,
                     width: 90,
                     child: Stack(
@@ -334,7 +334,7 @@ class _HomePageState extends State<HomePage> {
                     fit: BoxFit.fill,
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 135, left: 65),
+                    margin: EdgeInsets.only(top: 225, left: 85),
                     height: 26,
                     width: 90,
                     child: Stack(
